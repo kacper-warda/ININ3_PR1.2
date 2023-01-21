@@ -1,31 +1,36 @@
 package com.company;
 
+
+import com.company.creatures.Human;
 import com.company.devices.Car;
-import com.company.devices.Phone;
+import com.company.devices.Diesel;
+import com.company.devices.Electric;
+import com.company.devices.LPG;
+
+import java.util.Arrays;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Car fiat = new Car("Fiat", "Bravo", 2016, "grey");
-        Car passerati = new Car("VW", "Passat", 2004, "black");
 
-        Phone iphone = new Phone("Apple", "S", 2017, 4.3, 3);
-        Phone xiaomi = new Phone("xiaomi", "mi8", 2018, 6.8, 8, "Android", "black");
+        Car tesla = new Electric("tesla", "T", 2022, "red");
+        Car ford = new Diesel("Ford", "focus", 2015, "white");
+        Car fiat = new LPG("Fiat", "Bravo", 2005, "gray");
 
-        System.out.println("model: " + fiat.model);
-        System.out.println("rok produkcji: " + fiat.yearOfProduction);
-        System.out.println(fiat);
+        tesla.value = 130000.0;
+        ford.value = 20000.0;
+        fiat.value = 15000.0;
 
         Human me = new Human();
-        System.out.println(me.getSalary());
+        me.setCar(tesla, 0);
+        me.setCar(ford, 1);
 
-        me.setSalary(700.0);
+        me.sortCarsByValue();
 
-        me.feed();
-        me.takeForAWalk();
-        System.out.println(me.species);
-        System.out.println(me.weight);
-        System.out.println(me.firstName);
+        for (int i = 0; i < Human.DEFAULT_GARAGE_SIZE; i++) {
+            System.out.println(me.getCar(i));
+        }
+
     }
 }
